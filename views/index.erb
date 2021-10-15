@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>People in Space!</title>
+  </head>
+  <body>
+    <h1>There are <%= @as.count_astronauts.to_i %> astronauts in space right now.</h1>
+
+    <table class="table table-striped table-hover w-auto table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <td>Craft</td>
+          <td>Name</td>
+        </tr>
+        </thead>
+        <tbody>
+          <% @as.get_astronauts.each do |craft, people|%>
+            <% people.each_with_index do |person, counter|%>
+              <tr>
+                <td> <%= h(craft) if counter == 0 %> </td>
+                <td> <%= h(person) %> </td>
+              </tr>
+            <% end %>
+          <% end %>
+        <tbody>
+    </table>
+
+  </body>
+</html>
